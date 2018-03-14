@@ -10,4 +10,6 @@ func main() {
 	hand.print()
 	fmt.Println("---")
 	deck.print()
+	fmt.Println("---")
+	deck.saveToFile("test.data")
 }
