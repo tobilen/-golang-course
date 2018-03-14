@@ -3,7 +3,9 @@ package main
 import "fmt"
 
 func main() {
-	deck := newDeckFromFile("test.data")
+	deck := newDeck()
+	// deck := newDeckFromFile("test.data")
+	deck.shuffle()
 
 	hand, deck := deck.deal(3)
 

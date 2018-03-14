@@ -5,6 +5,8 @@ import (
 	"io/ioutil"
 	"strings"
 	"os"
+	"math/rand"
+	"time"
 )
 
 type deck []string
@@ -30,6 +32,17 @@ func (d deck) print() {
 
 func (d deck) deal(handSize int) (deck, deck) {
 	return d[:handSize], d[handSize:]
+}
+
+func (d deck) shuffle() {
+	source := rand.NewSource(time.Now().UnixNano())
+	rng := rand.New(source)
+
+	for i := range d {
+		newPosition := rng.Intn(len(d) - 1)
+
+		d[i], d[newPosition] = d[newPosition], d[i]
+	}
 }
 
 func (d deck) toJSON() string {
